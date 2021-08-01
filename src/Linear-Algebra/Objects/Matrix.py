@@ -10,10 +10,11 @@ Methods:
     gaussian elimination - Solves a System of Linear Equations
     identity - Generates an identity matrix given rows
     concat - Concatenates 2 matrices together where the first is on the left and the new is on the right
+    inverse - Returns the inverse of the given matrix
     +, -, *, /, @ , where '@' is the Matrix Multiplication operator
     to string
 '''
-
+# TODO: Add Sub-Matrix support : input = (startRow,startCol, endRow, endCol) , output = Sub-Matrix
 
 class Matrix:
 
@@ -115,8 +116,9 @@ class Matrix:
         return self
 
     '''Concat, glues 2 matrices together left to right'''
-
-    def Concat(self, other):
+    '''Input: Matrix , Matrix'''
+    '''Output: Matrix'''
+    def concat(self, other):
         bigger_rows = self.rows if self.rows > other.rows else other.rows
         smaller_rows = self.rows if self.rows < other.rows else other.rows
         who_is_smaller = self if self.rows < other.rows else other
@@ -131,6 +133,12 @@ class Matrix:
             # on each iteration, self.A[row] = self.A[row] + other.A[row]
             self.A[row] = self.A[row] + other.A[row]
         return self
+
+    '''inverse, returns I|A^-1'''
+    '''Input: Matrix , Matrix'''
+    '''Output: Matrix'''
+    def inverse(self):
+        return self.concat(Matrix(rows=self.rows, cols=self.cols).identity()).gauss_elimination()
 
     '''Overload Addition operator to define Addition operation for Matrix Objects'''
     '''Input: Matrix , Matrix or Matrix , Scalar'''
@@ -305,7 +313,8 @@ test = Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 test2 = Matrix([[9, 8, 7], [6, 5, 4], [3, 2, 1]])
 test3 = Matrix([[3, 2, -1, 1], [2, -2, 4, -2], [-1, .5, -1, 0]])
 test4 = Matrix([[3, 2, -1, 1], [2, -2, 4, -2], [-1, .5, -1, 0]])
-test5 = Matrix(rows=4, cols=4).Concat(Matrix(rows=2, cols=2))
+test5 = Matrix(rows=4, cols=4).concat(Matrix(rows=2, cols=2))
+test6 = test4.concat(Matrix(rows=test4.rows, cols=test4.cols))
 
 '''
 print("")
@@ -421,7 +430,6 @@ print("some stuff on the white board")
 print("Got:")
 print(test4.gauss_elimination())
 
-'''
 print("Test 13")
 print("Matrix(rows=4, cols=4).Concat(Matrix(rows=2, cols=2))")
 print("")
@@ -429,3 +437,11 @@ print("Expected:")
 print("   1.000     0.000     0.000     0.000     1.000     0.000\n   0.000     1.000     0.000     0.000     0.000     1.000\n   0.000     0.000     1.000     0.000     0.000     0.000\n   0.000     0.000     0.000     1.000     0.000     0.000") 
 print("Got:")
 print(test5)
+'''
+print("Test 14")
+print("test6 * test6.gauss_elimination()")
+print("")
+print("Expected:")
+print("   1.000     0.000     0.000     1.000\n   0.000     1.000     0.000     4.000\n   0.000     0.000     1.000     4.000\n") 
+print("Got:")
+print(test6.inverse())
