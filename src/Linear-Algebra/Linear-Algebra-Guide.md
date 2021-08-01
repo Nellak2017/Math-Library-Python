@@ -78,6 +78,14 @@
 *For Example:*\
 <img src="http://www.sciweavers.org/tex2img.php?eq=%20%5Cbegin%7Bbmatrix%7D1%20%26%200%20%5C%5C0%20%26%201%20%5Cend%7Bbmatrix%7D%20&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt=" \begin{bmatrix}1 & 0 \\0 & 1 \end{bmatrix} " width="56" height="39" />
 
+### Partitioned Matrix
+
+*A partitioned matrix, or a block matrix, is a matrix, M, that has been constructed from other smaller matrices. These smaller matrices are called blocks or sub-matrices of M*
+
+### Identity Matrix
+
+*A Square Matrix with nothing but 1 on the diagonals*
+
 ## Objects
 
 - Vector
