@@ -6,6 +6,9 @@ Python Math Library is designed to help solve common mathematical problems and i
 - Use Pre-Made Math functions written in Python
 - Use a Python Math Interpreter to parse math expressions
 
+## Status
+This project is in its infancy, and thus is not very well developed yet.
+
 ## Usage
 
 - In a new folder on a computer with Github installed, perform "git init" command to create a new git folder
